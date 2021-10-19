@@ -1,0 +1,13 @@
+ALTER PROCEDURE Facility_Config_GetConfigByID
+@ConfigID int
+AS
+BEGIN
+SELECT [ConfigID]
+      ,[PrimaryColor]
+      ,[SecondaryColor]
+  FROM [Facility].[dbo].[Configuration]
+  WHERE ConfigID = @ConfigID
+END
+GO
+
+-----------------------------------------------------------------
