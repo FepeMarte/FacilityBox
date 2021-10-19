@@ -54,17 +54,6 @@ namespace FacilityBox.Controller
             }
         }
 
-        public int GetMaxID()
-        {
-
-            using (SqlConnection cn = new SqlConnection(Utils.ConnectionString))
-            {
-                var id = cn.ExecuteScalar<int>("Facility_Category_GetMaxID",
-                transaction: CurrentTransaction,
-                commandType: CommandType.StoredProcedure);
-
-                return id;
-            }
-        }
+ 
     }
 }

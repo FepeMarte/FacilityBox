@@ -1,0 +1,11 @@
+Tela Categorias
+
+-Alinhar layout
+-Remover pesquisa por nome
+-Procedure carregar categorias
+-Clicar na categoria carrega formulario
+-Metodo limpar
+-metodo salvar
+-retornar ID quando limpar
+-Adicionar coluna Inativo
+-converter inativo de boleano para string

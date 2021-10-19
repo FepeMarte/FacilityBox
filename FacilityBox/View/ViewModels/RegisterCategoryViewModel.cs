@@ -15,10 +15,10 @@ namespace FacilityBox.View.ViewModels
 {
     public class RegisterCategoryViewModel: BaseNotifyPropertyChanged
     {
-        ConfigService config = new ConfigService(); 
+        CategoryService categoryService = new CategoryService(); 
         public RegisterCategoryViewModel()
         {
-            ID = config.GetMaxID() + 1;
+            ID = categoryService.GetMaxID() + 1;
             Inactive = true;
         }
 
@@ -77,7 +77,7 @@ namespace FacilityBox.View.ViewModels
 
         public void Clear()
         {
-            ID = config.GetMaxID() + 1;
+            ID = categoryService.GetMaxID() + 1;
             Name = "";
             Inactive = false;
         }

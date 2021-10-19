@@ -150,3 +150,47 @@ END
 GO
 
 ----------------------------------------------------------------------
+
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Category_GetMaxID' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Category_GetMaxID] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+ALTER PROCEDURE Facility_Category_GetMaxID
+
+AS
+BEGIN
+ SELECT MAX(CategoryID) FROM Categories
+
+END
+GO
+
+-------------------------------------------------------------------------------
+
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Config_UpdateConfig' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Config_UpdateConfig] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+
+ALTER PROCEDURE Facility_Config_UpdateConfig 
+@PrimaryColor varchar(150),
+@SecondaryColor varchar(150)
+AS
+BEGIN
+	UPDATE Configuration
+	SET PrimaryColor = @PrimaryColor,
+	SecondaryColor = @SecondaryColor
+	WHERE ConfigID = 1
+END
+GO
+
+-------------------------------------------------------------------------------------

@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\CategoryService.cs" />
     <Compile Include="Controller\ConfigService.cs" />
     <Compile Include="Controller\ItemService.cs" />
     <Compile Include="Model\Category.cs" />
