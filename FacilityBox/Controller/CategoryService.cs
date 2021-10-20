@@ -63,5 +63,22 @@ namespace FacilityBox.Controller
                 return list.ToList();
             }
         }
+
+        public Category GetCategoryByName(string name)
+        {
+
+            using (SqlConnection cn = new SqlConnection(Utils.ConnectionString))
+            {
+                var category = cn.Query<Category>("Facility_Category_GetCategoryByName",
+                param: new
+                {
+                    Name = name,
+                },
+                transaction: CurrentTransaction,
+                commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+                return category;
+            }
+        }
     }
 }

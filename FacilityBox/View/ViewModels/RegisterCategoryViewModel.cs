@@ -19,7 +19,7 @@ namespace FacilityBox.View.ViewModels
         public RegisterCategoryViewModel()
         {
             ID = _CategoryService.GetMaxID() + 1;
-            Categories = _CategoryService.GetAllCategories();  
+            Categories = _CategoryService.GetAllCategories();
         }
 
         #region Properties
@@ -120,10 +120,18 @@ namespace FacilityBox.View.ViewModels
             category.CategoryID = ID;
             category.Name = Name;
             category.Inactive = Inactive;
+
+            var cat = _CategoryService.GetCategoryByName(category.Name.Trim());
+            if(cat != null)
+            {
+                MessageBox.Show($"Já existe uma categoria com o nome {cat.Name}!", "Atenção");
+                return;
+            }
            
             var id = _CategoryService.CreateCategory(category);
 
             MessageBox.Show("Operação realizada com SUCESSO!", "Sucesso");
+            Categories = _CategoryService.GetAllCategories();
             Clear();
         }
 
