@@ -21,7 +21,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="70"/>
             <RowDefinition Height="Auto"/>
 
@@ -108,13 +108,13 @@
                             </Grid.RowDefinitions>
 
 
-                            <DockPanel Grid.Row="0" Margin="10,0,10,0">
+                            <!--<DockPanel Grid.Row="0" Margin="10,0,10,0">
                                 <TextBox Grid.Row="0" Text="{Binding ValueFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                              HorizontalAlignment="Stretch" Margin="0 0 0 3"  
                                                FontSize="16" FontWeight="SemiBold" Typography.Capitals="AllSmallCaps"   MaxLength="100" VerticalAlignment="Top">
 
                                 </TextBox>
-                            </DockPanel>
+                            </DockPanel>-->
 
                             <DataGrid Grid.Row="1" ItemsSource="{Binding GridContent, UpdateSourceTrigger=PropertyChanged}" 
                               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
@@ -137,6 +137,14 @@
 
 
                                     <DataGridTextColumn Header="Nome" Binding="{Binding ProductID}" ClipboardContentBinding="{x:Null}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style>
+                                                <Setter Property="TextBlock.HorizontalAlignment" Value="Right"></Setter>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn Header="Inativo" Binding="{Binding Incative}" ClipboardContentBinding="{x:Null}">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style>
                                                 <Setter Property="TextBlock.HorizontalAlignment" Value="Right"></Setter>

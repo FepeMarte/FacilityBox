@@ -28,7 +28,7 @@ namespace FacilityBox.View.ViewModels
         public List<Theme> Themes
         {
             get { return _Themes; }
-            set { SetProperty(ref _Themes, value); }
+            set { _Themes = value; OnPropertyRaised("Themes"); }
         }
 
         private Theme _SelectedTheme;
@@ -36,7 +36,7 @@ namespace FacilityBox.View.ViewModels
         public Theme SelectedTheme
         {
             get { return _SelectedTheme; }
-            set {SetProperty(ref _SelectedTheme, value); }
+            set { _SelectedTheme = value; OnPropertyRaised("SelectedTheme"); }
         }
 
 

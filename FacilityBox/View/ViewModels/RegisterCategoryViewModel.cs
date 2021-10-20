@@ -19,7 +19,7 @@ namespace FacilityBox.View.ViewModels
         public RegisterCategoryViewModel()
         {
             ID = categoryService.GetMaxID() + 1;
-            Inactive = true;
+           
         }
 
         #region Properties
@@ -28,7 +28,7 @@ namespace FacilityBox.View.ViewModels
         public int ID
         {
             get { return _ID; }
-            set { SetProperty(ref _ID, value); }
+            set { _ID = value; OnPropertyRaised("ID"); }
         }
 
         private string _Name;
@@ -36,7 +36,10 @@ namespace FacilityBox.View.ViewModels
         public string Name
         {
             get { return _Name; }
-            set { SetProperty(ref _Name, value); }
+            set {
+                _Name = value;
+                OnPropertyRaised("Name");
+            }
 
         }
 
@@ -45,7 +48,10 @@ namespace FacilityBox.View.ViewModels
         public bool Inactive
         {
             get { return _Inactive; }
-            set { SetProperty(ref _Inactive, value); }
+            set {
+                _Inactive = value;
+                 OnPropertyRaised("Inactive");
+                 }
         }
 
 
