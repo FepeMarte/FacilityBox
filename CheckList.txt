@@ -1,8 +1,6 @@
 Tela Categorias
 
--Procedure carregar categorias
 -Clicar na categoria carrega formulario
--Metodo limpar
 -metodo salvar
 -retornar ID quando limpar
 -converter inativo de boleano para string

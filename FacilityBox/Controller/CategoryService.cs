@@ -50,5 +50,18 @@ namespace FacilityBox.Controller
                 return id;
             }
         }
+
+        public List<Category> GetAllCategories()
+        {
+
+            using (SqlConnection cn = new SqlConnection(Utils.ConnectionString))
+            {
+                var list = cn.Query<Category>("Facility_Category_GetAllCategories",
+                transaction: CurrentTransaction,
+                commandType: CommandType.StoredProcedure);
+
+                return list.ToList();
+            }
+        }
     }
 }

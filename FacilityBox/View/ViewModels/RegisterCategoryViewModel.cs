@@ -19,7 +19,7 @@ namespace FacilityBox.View.ViewModels
         public RegisterCategoryViewModel()
         {
             ID = _CategoryService.GetMaxID() + 1;
-           
+            Categories = _CategoryService.GetAllCategories();  
         }
 
         #region Properties
@@ -53,6 +53,16 @@ namespace FacilityBox.View.ViewModels
                  OnPropertyRaised("Inactive");
                  }
         }
+
+
+        private List<Category> _Categories;
+
+        public List<Category> Categories
+        {
+            get { return _Categories; }
+            set { _Categories = value; OnPropertyRaised("Categories"); }
+        }
+
 
 
         #endregion

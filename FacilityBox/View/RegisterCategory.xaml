@@ -116,7 +116,7 @@
                                 </TextBox>
                             </DockPanel>-->
 
-                            <DataGrid Grid.Row="1" ItemsSource="{Binding GridContent, UpdateSourceTrigger=PropertyChanged}" 
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding Categories, UpdateSourceTrigger=PropertyChanged}" 
                               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                               VerticalContentAlignment="Center" Height="Auto" 
                               AutoGenerateColumns="False" IsReadOnly="True" 
@@ -127,27 +127,27 @@
                                       >
 
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ID" Binding="{Binding ProductID}" ClipboardContentBinding="{x:Null}">
+                                    <DataGridTextColumn Header="ID" Binding="{Binding CategoryID}" ClipboardContentBinding="{x:Null}">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style>
-                                                <Setter Property="TextBlock.HorizontalAlignment" Value="Right"></Setter>
+                                                <Setter Property="TextBlock.HorizontalAlignment" Value="Center"></Setter>
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
 
-                                    <DataGridTextColumn Header="Nome" Binding="{Binding ProductID}" ClipboardContentBinding="{x:Null}">
+                                    <DataGridTextColumn Header="Nome" Binding="{Binding Name}" ClipboardContentBinding="{x:Null}">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style>
-                                                <Setter Property="TextBlock.HorizontalAlignment" Value="Right"></Setter>
+                                                <Setter Property="TextBlock.HorizontalAlignment" Value="Left"></Setter>
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
-                                    <DataGridTextColumn Header="Inativo" Binding="{Binding Incative}" ClipboardContentBinding="{x:Null}">
+                                    <DataGridTextColumn Header="Inativo" Binding="{Binding Inactive}" ClipboardContentBinding="{x:Null}">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style>
-                                                <Setter Property="TextBlock.HorizontalAlignment" Value="Right"></Setter>
+                                                <Setter Property="TextBlock.HorizontalAlignment" Value="Center"></Setter>
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
