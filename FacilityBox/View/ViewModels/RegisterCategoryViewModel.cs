@@ -15,10 +15,10 @@ namespace FacilityBox.View.ViewModels
 {
     public class RegisterCategoryViewModel: BaseNotifyPropertyChanged
     {
-        CategoryService categoryService = new CategoryService(); 
+        CategoryService _CategoryService = new CategoryService(); 
         public RegisterCategoryViewModel()
         {
-            ID = categoryService.GetMaxID() + 1;
+            ID = _CategoryService.GetMaxID() + 1;
            
         }
 
@@ -83,7 +83,7 @@ namespace FacilityBox.View.ViewModels
 
         public void Clear()
         {
-            ID = categoryService.GetMaxID() + 1;
+            ID = _CategoryService.GetMaxID() + 1;
             Name = "";
             Inactive = false;
         }
@@ -105,6 +105,13 @@ namespace FacilityBox.View.ViewModels
             {
                 return;
             }
+
+            Category category = new Category();
+            category.CategoryID = ID;
+            category.Name = Name;
+            category.Inactive = Inactive;
+           
+            var id = _CategoryService.CreateCategory(category);
 
             MessageBox.Show("Operação realizada com SUCESSO!", "Sucesso");
             Clear();

@@ -211,7 +211,9 @@
                                 Grid.Row="1" 
                                 Grid.Column="1" 
                                 Margin="10,0,10,0"
+                                MaxLength="150"
                                 Text="{Binding Name,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                CharacterCasing="Upper"
                                 />
                             <Label 
                                 Grid.Row="2" 

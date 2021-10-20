@@ -21,7 +21,8 @@ CREATE TABLE Items
 	Name varchar(150),
 	Description varchar(255),
 	Value money,
-	CategoryID int
+	CategoryID int,
+	Inactive bit
 )
 
 GO
@@ -35,7 +36,8 @@ CREATE TABLE Platforms
 (
 	PlatformID int identity not null primary key,
 	Name varchar(150),
-	Rate money
+	Rate money,
+	Inactive bit
 )
 
 GO
@@ -49,7 +51,8 @@ CREATE TABLE PaymentMethods
 (
 	PaymentID int identity not null primary key,
 	Name varchar(150),
-	Rate money
+	Rate money,
+	Inactive bit
 )
 
 GO
@@ -65,10 +68,21 @@ CREATE TABLE Orders
 	NameClient varchar(150),
 	PaymentID int,
 	PlatFormID int,
-	TotalValue money
+	TotalValue money,
+	StatusID int
 )
 
 GO
+
+CREATE TABLE Status
+(
+	StatusID int not null identity primary key,
+	Name varchar(30)
+)
+
+GO
+
+
 
 IF OBJECT_ID('OrderItems') IS NOT NULL
     DROP TABLE OrderItems
@@ -93,7 +107,8 @@ GO
 CREATE TABLE Categories
 (
 	CategoryID int not null identity primary key,
-	Name varchar(150)
+	Name varchar(150),
+	Inactive bit
 )
 
 GO
@@ -120,6 +135,16 @@ INSERT INTO Configuration
 	'#ff6100',
 	'#ffcfb2'
 )
+
+GO
+
+INSERT INTO Status(Name) VALUES ('Pendente')
+
+GO
+INSERT INTO Status(Name) VALUES ('Pago')
+
+GO
+INSERT INTO Status(Name) VALUES ('Cancelado')
 
 
 ---------------------------------------------------------------------------------------------
@@ -194,3 +219,60 @@ END
 GO
 
 -------------------------------------------------------------------------------------
+
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Category_Create' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Category_Create] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+
+ALTER PROCEDURE Facility_Category_Create
+@Name varchar(150),
+@Inactive Bit
+AS
+BEGIN
+	INSERT INTO Categories
+	(
+		Name,
+		Inactive
+	)VALUES
+	(
+		@Name,
+		@Inactive
+	)
+
+	SELECT SCOPE_IDENTITY();
+
+END
+GO
+
+-----------------------------------------------------------------------------------------
+
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Category_GetAllCategories' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Category_GetAllCategories] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+
+ALTER PROCEDURE Facility_Category_GetAllCategories
+AS
+BEGIN
+	SELECT 
+	CategoryID,
+	Name,
+	Inactive
+	FROM Categories
+	Order By Name
+
+END
+GO
+
+------------------------------------------------------------------------------------
