@@ -20,6 +20,7 @@ namespace FacilityBox.View.ViewModels
         {
             ID = _CategoryService.GetMaxID() + 1;
             Categories = _CategoryService.GetAllCategories();
+            IsEdit = false;
         }
 
         #region Properties
@@ -55,6 +56,7 @@ namespace FacilityBox.View.ViewModels
         }
 
 
+
         private List<Category> _Categories;
 
         public List<Category> Categories
@@ -63,6 +65,22 @@ namespace FacilityBox.View.ViewModels
             set { _Categories = value; OnPropertyRaised("Categories"); }
         }
 
+        private bool _IsEdit;
+
+        public bool IsEdit
+        {
+            get { return _IsEdit; }
+            set { _IsEdit = value; OnPropertyRaised("IsEdit"); }
+        }
+
+
+        private Category _SelectedCategory;
+
+        public Category SelectedCategory
+        {
+            get { return _SelectedCategory; }
+            set { _SelectedCategory = value; OnPropertyRaised("SelectedCategory"); }
+        }
 
 
         #endregion
@@ -96,6 +114,7 @@ namespace FacilityBox.View.ViewModels
             ID = _CategoryService.GetMaxID() + 1;
             Name = "";
             Inactive = false;
+            IsEdit = false;
         }
 
         public bool Validation()

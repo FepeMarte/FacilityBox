@@ -49,5 +49,17 @@ namespace FacilityBox.View
             this.Resources["secondaryColor"] = (Utils.SecondaryColor);
 
         }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var a = (DataContext as RegisterCategoryViewModel);
+            a.IsEdit = true;
+            a.ID = a.SelectedCategory.CategoryID;
+            a.Name = a.SelectedCategory.Name;
+            a.Inactive = a.SelectedCategory.Inactive;
+
+            Dispatcher.BeginInvoke((Action)(() => tcCategory.SelectedIndex = 1));
+            
+        }
     }
 }

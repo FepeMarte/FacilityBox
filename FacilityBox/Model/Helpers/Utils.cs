@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace FacilityBox.Model.Helpers
@@ -28,7 +30,34 @@ namespace FacilityBox.Model.Helpers
         }
 
 
+    }
 
+	public class YesNoToBooleanConverter : IValueConverter
+	{
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+           
+            if (value is bool)
+            {
+                if ((bool)value == true)
+                    return "SIM";
+                else
+                    return "NÃO";
+            }
+            return "NÃO";
+        }
 
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            
+            switch (value.ToString().ToLower())
+            {
+                case "sim":
+                    return true;
+                case "não":
+                    return false;
+            }
+            return false;
+        }
     }
 }

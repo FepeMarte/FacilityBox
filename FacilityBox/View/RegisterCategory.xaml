@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FacilityBox.View"
         xmlns:utils="clr-namespace:FacilityBox.Model.Helpers"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+       
         mc:Ignorable="d" 
         Height="450" Width="600"
         Background="{DynamicResource secondaryColor}"
@@ -18,6 +19,12 @@
         Name="frmCategory"
         BorderThickness="1"
         BorderBrush="Gray">
+    <Window.Resources>
+        <utils:YesNoToBooleanConverter x:Key="YesNoToBooleanConverter" />
+    </Window.Resources>
+
+
+
 
     <Grid>
         <Grid.RowDefinitions>
@@ -26,7 +33,7 @@
             <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
-
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="589*"/>
             <ColumnDefinition Width="205*"/>
@@ -75,6 +82,7 @@
         </StackPanel>
 
         <TabControl 
+                x:Name="tcCategory"
                 Grid.Row="2" 
                 Grid.ColumnSpan="2" 
                 Height="340" 
@@ -120,8 +128,9 @@
                               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                               VerticalContentAlignment="Center" Height="Auto" 
                               AutoGenerateColumns="False" IsReadOnly="True" 
-                              SelectedItem="{Binding SelectedGridItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                              SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                               SelectionMode="Single" CanUserAddRows="false" 
+                              MouseDoubleClick="DataGrid_MouseDoubleClick"
                               VirtualizingStackPanel.VirtualizationMode = "Recycling"
                                       
                                       >
@@ -144,11 +153,12 @@
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
-                                    <DataGridTextColumn Header="Inativo" Binding="{Binding Inactive}" ClipboardContentBinding="{x:Null}">
+                                    <DataGridTextColumn Header="Inativo" Binding="{Binding Path=Inactive, Converter={StaticResource YesNoToBooleanConverter}}" ClipboardContentBinding="{x:Null}">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style>
                                                 <Setter Property="TextBlock.HorizontalAlignment" Value="Center"></Setter>
                                             </Style>
+                                         
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
                                 </DataGrid.Columns>

@@ -1,6 +1,3 @@
 Tela Categorias
 
--Clicar na categoria carrega formulario
--metodo salvar
--retornar ID quando limpar
 -converter inativo de boleano para string
