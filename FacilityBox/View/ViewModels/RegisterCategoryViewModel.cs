@@ -140,14 +140,24 @@ namespace FacilityBox.View.ViewModels
             category.Name = Name;
             category.Inactive = Inactive;
 
-            var cat = _CategoryService.GetCategoryByName(category.Name.Trim());
-            if(cat != null)
+
+            if (!IsEdit)
             {
-                MessageBox.Show($"Já existe uma categoria com o nome {cat.Name}!", "Atenção");
-                return;
+                //save
+                var cat = _CategoryService.GetCategoryByName(category.Name.Trim());
+                if (cat != null)
+                {
+                    MessageBox.Show($"Já existe uma categoria com o nome {cat.Name}!", "Atenção");
+                    return;
+                }
+
+                var id = _CategoryService.CreateCategory(category);
             }
-           
-            var id = _CategoryService.CreateCategory(category);
+            else
+            {
+                //update
+                var id = _CategoryService.UpdateCategory(category);
+            }
 
             MessageBox.Show("Operação realizada com SUCESSO!", "Sucesso");
             Categories = _CategoryService.GetAllCategories();

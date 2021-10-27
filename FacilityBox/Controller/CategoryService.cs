@@ -51,6 +51,25 @@ namespace FacilityBox.Controller
             }
         }
 
+        public int UpdateCategory(Category category)
+        {
+
+            using (SqlConnection cn = new SqlConnection(Utils.ConnectionString))
+            {
+                var id = cn.ExecuteScalar<int>("Facility_Category_Update",
+                param: new
+                {
+                    CategoryID = category.CategoryID,
+                    Name = category.Name,
+                    Inactive = category.Inactive
+                },
+                transaction: CurrentTransaction,
+                commandType: CommandType.StoredProcedure);
+
+                return id;
+            }
+        }
+
         public List<Category> GetAllCategories()
         {
 
