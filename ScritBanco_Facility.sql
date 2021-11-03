@@ -276,3 +276,29 @@ END
 GO
 
 ------------------------------------------------------------------------------------
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Category_Update' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Category_Update] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+
+ALTER PROCEDURE Facility_Category_Update
+@CategoryID int,
+@Name varchar(150),
+@Inactive Bit
+AS
+BEGIN
+	UPDATE Categories SET
+	Name = @Name,
+	Inactive = @Inactive
+	WHERE CategoryID = @CategoryID
+
+
+END
+GO
+
+------------------------------------------------------------------------------------

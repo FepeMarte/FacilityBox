@@ -88,6 +88,9 @@
     <Compile Include="View\ConfigControl.xaml.cs">
       <DependentUpon>ConfigControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\RegisterPlatform.xaml.cs">
+      <DependentUpon>RegisterPlatform.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RegisterCategory.xaml.cs">
       <DependentUpon>RegisterCategory.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,7 @@
     </Compile>
     <Compile Include="View\ViewModels\ConfigControlViewModel.cs" />
     <Compile Include="View\ViewModels\RegisterCategoryViewModel.cs" />
+    <Compile Include="View\ViewModels\RegisterPlatformViewModel.cs" />
     <Compile Include="View\ViewModels\SplashScreenViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +116,10 @@
     <Page Include="View\ConfigControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RegisterPlatform.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\RegisterCategory.xaml">
       <SubType>Designer</SubType>
