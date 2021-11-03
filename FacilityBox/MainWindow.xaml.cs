@@ -79,5 +79,13 @@ namespace FacilityBox
             var dialog = new ConfigControl(vm);
             var r = dialog.ShowDialog();
         }
+
+        private void btnPlatform_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = new RegisterPlatformViewModel();
+            var dialog = new RegisterPlatform(vm);
+            dialog.Owner = this;
+            var r = dialog.ShowDialog();
+        }
     }
 }

@@ -174,7 +174,9 @@
                     Height="100" 
                     Background="Transparent" 
                     BorderBrush="Transparent" 
-                    ToolTip="Plataformas">
+                    ToolTip="Plataformas"
+                    x:Name="btnPlatform"
+                    Click="btnPlatform_Click">
                     <StackPanel 
                         Width="100"
                         HorizontalAlignment="Center">

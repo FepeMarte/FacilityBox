@@ -302,3 +302,22 @@ END
 GO
 
 ------------------------------------------------------------------------------------
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Platform_GetMaxID' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Platform_GetMaxID] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+ALTER PROCEDURE Facility_Platform_GetMaxID
+
+AS
+BEGIN
+ SELECT MAX(PlatformID) FROM Platforms
+
+END
+GO
+
+---------------------------------------------------------------------------------------

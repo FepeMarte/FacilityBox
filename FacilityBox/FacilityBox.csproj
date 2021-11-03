@@ -77,6 +77,7 @@
     <Compile Include="Controller\CategoryService.cs" />
     <Compile Include="Controller\ConfigService.cs" />
     <Compile Include="Controller\ItemService.cs" />
+    <Compile Include="Controller\PlatformService.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Helpers\BaseNotifyPropertyChanged.cs" />
     <Compile Include="Model\Helpers\CommandHandler.cs" />

@@ -124,11 +124,11 @@
                                 </TextBox>
                             </DockPanel>-->
 
-                            <DataGrid Grid.Row="1" ItemsSource="{Binding Categories, UpdateSourceTrigger=PropertyChanged}" 
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding Platiforms, UpdateSourceTrigger=PropertyChanged}" 
                               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                               VerticalContentAlignment="Center" Height="Auto" 
                               AutoGenerateColumns="False" IsReadOnly="True" 
-                              SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                              SelectedItem="{Binding SelectedPlatiform, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                               SelectionMode="Single" CanUserAddRows="false" 
                               MouseDoubleClick="DataGrid_MouseDoubleClick"
                               VirtualizingStackPanel.VirtualizationMode = "Recycling"
@@ -136,7 +136,7 @@
                                       >
 
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ID" Binding="{Binding CategoryID}" ClipboardContentBinding="{x:Null}">
+                                    <DataGridTextColumn Header="ID" Binding="{Binding PlatformID}" ClipboardContentBinding="{x:Null}">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style>
                                                 <Setter Property="TextBlock.HorizontalAlignment" Value="Center"></Setter>
@@ -146,6 +146,14 @@
 
 
                                     <DataGridTextColumn Header="Nome" Binding="{Binding Name}" ClipboardContentBinding="{x:Null}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style>
+                                                <Setter Property="TextBlock.HorizontalAlignment" Value="Left"></Setter>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    
+                                    <DataGridTextColumn Header="Taxa" Binding="{Binding Rate}" ClipboardContentBinding="{x:Null}">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style>
                                                 <Setter Property="TextBlock.HorizontalAlignment" Value="Left"></Setter>
@@ -195,6 +203,7 @@
                                 <RowDefinition Height="35"/>
                                 <RowDefinition Height="35"/>
                                 <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
                                 <RowDefinition Height="130"/>
                                 <RowDefinition Height="35"/>
                             </Grid.RowDefinitions>
@@ -225,14 +234,30 @@
                                 Text="{Binding Name,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                 CharacterCasing="Upper"
                                 />
-                            <Label 
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Content="Taxa"
+                                HorizontalContentAlignment="Right"
+                                />
+                            <TextBox  
                                 Grid.Row="2" 
+                                Grid.Column="1" 
+                                Margin="10,0,10,0"
+                                Text="{Binding Rate,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                Width="100"
+                                HorizontalAlignment="Left"
+                                />
+                            
+                            <Label 
+                                Grid.Row="3" 
                                 Grid.Column="0"  
                                 Content="Inativo"
                                 HorizontalContentAlignment="Right"
                                 />
                             <CheckBox
-                                Grid.Row="2" 
+                                Grid.Row="3" 
                                 Grid.Column="1" 
                                 Margin="10"
                                 IsChecked="{Binding Inactive, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
@@ -251,6 +276,7 @@
                                     DockPanel.Dock="Right"
                                     BorderThickness="0"
                                     Command="{Binding SaveCommand}"
+                                    VerticalAlignment="Bottom"
                                     />
 
                                 <StackPanel 
@@ -265,6 +291,7 @@
                                     DockPanel.Dock="Left"
                                     BorderThickness="0"
                                     Command="{Binding ClearCommand}"
+                                    VerticalAlignment="Bottom"
                                     />
 
 
