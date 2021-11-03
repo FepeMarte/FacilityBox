@@ -124,7 +124,7 @@
                                 </TextBox>
                             </DockPanel>-->
 
-                            <DataGrid Grid.Row="1" ItemsSource="{Binding Platiforms, UpdateSourceTrigger=PropertyChanged}" 
+                            <DataGrid Grid.Row="1" ItemsSource="{Binding Platforms, UpdateSourceTrigger=PropertyChanged}" 
                               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                               VerticalContentAlignment="Center" Height="Auto" 
                               AutoGenerateColumns="False" IsReadOnly="True" 
