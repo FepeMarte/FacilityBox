@@ -248,6 +248,7 @@
                                 Text="{Binding Rate,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                 Width="100"
                                 HorizontalAlignment="Left"
+                                PreviewTextInput="TextBox_PreviewTextInput"
                                 />
                             
                             <Label 

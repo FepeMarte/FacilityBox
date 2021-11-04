@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace FacilityBox.View.ViewModels
@@ -103,6 +104,30 @@ namespace FacilityBox.View.ViewModels
             Rate = 0;
             Inactive = false;
             IsEdit = false;
+        }
+
+        public bool Validation()
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                MessageBox.Show("Informe o nome da Plataforma!", "Atenção");
+                return false;
+            }
+
+            if(Rate <= 0)
+            {
+                MessageBox.Show("Valor da Taxa inválido!", "Atenção");
+                return false;
+            }
+
+            return true;
+        }
+
+        public void Save()
+        {
+            if (!Validation()) return;
+
+
         }
 
         #endregion

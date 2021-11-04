@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -60,6 +60,12 @@ namespace FacilityBox.View
 
             Dispatcher.BeginInvoke((Action)(() => tcCategory.SelectedIndex = 1));
             
+        }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var t = (TextBox)sender;
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
         }
     }
 }
