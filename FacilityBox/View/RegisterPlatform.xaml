@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FacilityBox.View"
         xmlns:utils="clr-namespace:FacilityBox.Model.Helpers"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-       
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d" 
         Height="450" Width="600"
         Background="{DynamicResource secondaryColor}"
@@ -247,8 +246,10 @@
                                 Margin="10,0,10,0"
                                 Text="{Binding Rate,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                 Width="100"
+                                MaxLength="4"
                                 HorizontalAlignment="Left"
                                 PreviewTextInput="TextBox_PreviewTextInput"
+                              
                                 />
                             
                             <Label 

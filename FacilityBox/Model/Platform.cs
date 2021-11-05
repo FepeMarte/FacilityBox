@@ -11,6 +11,6 @@ namespace FacilityBox.Model
         public int PlatformID { get; set; }
         public string Name { get; set; }
         public decimal Rate { get; set; }
-        public int Inactive { get; set; }
+        public bool Inactive { get; set; }
     }
 }

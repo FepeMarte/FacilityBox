@@ -127,7 +127,34 @@ namespace FacilityBox.View.ViewModels
         {
             if (!Validation()) return;
 
+            Platform platform = new Platform();
 
+            platform.PlatformID = ID;
+            platform.Name = Name;
+            platform.Rate = Rate;
+            platform.Inactive = Inactive;
+
+            if (!IsEdit)
+            {
+                //save
+                var plat = _PlatformService.GetPlatformByName(platform.Name.Trim());
+                if (plat != null)
+                {
+                    MessageBox.Show($"Já existe uma plataforma com o nome {plat.Name}!", "Atenção");
+                    return;
+                }
+
+               // var id = _PlatformService.CreateCategory(platform);
+            }
+            else
+            {
+                //update
+               // var id = _PlatformService.UpdateCategory(platform);
+            }
+
+            MessageBox.Show("Operação realizada com SUCESSO!", "Sucesso");
+            Platforms = _PlatformService.GetAllPlatforms();
+            Clear();
         }
 
         #endregion

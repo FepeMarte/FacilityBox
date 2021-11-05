@@ -46,6 +46,23 @@ namespace FacilityBox.Controller
                 return list.ToList();
             }
         }
+
+        public Platform GetPlatformByName(string name)
+        {
+
+            using (SqlConnection cn = new SqlConnection(Utils.ConnectionString))
+            {
+                var platform = cn.Query<Platform>("Facility_Platform_GetPlatformByName",
+                param: new
+                {
+                    Name = name,
+                },
+                transaction: CurrentTransaction,
+                commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+                return platform;
+            }
+        }
     }
 
   

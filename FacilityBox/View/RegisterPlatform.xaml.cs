@@ -25,7 +25,7 @@ namespace FacilityBox.View
     public partial class RegisterPlatform : Window
     {
         public RegisterPlatform(RegisterPlatformViewModel vm)
-        { 
+        {
             DataContext = vm;
             InitializeComponent();
             Load();
@@ -59,13 +59,14 @@ namespace FacilityBox.View
             a.Inactive = a.SelectedCategory.Inactive;
 
             Dispatcher.BeginInvoke((Action)(() => tcCategory.SelectedIndex = 1));
-            
+
         }
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var t = (TextBox)sender;
-            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
+            e.Handled = Regex.IsMatch(t.Text, "[^0-9.,]");
         }
+
     }
-}
+    }

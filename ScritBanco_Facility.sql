@@ -306,6 +306,34 @@ Use [Facility]
 
 GO
 
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Category_GetCategoryByName' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Category_GetCategoryByName] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+
+ALTER PROCEDURE Facility_Category_GetCategoryByName
+@Name varchar(150)
+AS
+BEGIN
+	SELECT 
+	CategoryID,
+	Name,
+	Inactive
+	FROM Categories
+	WHERE Name = @Name
+
+END
+GO
+
+--------------------------------------------------------------------------------------
+
+
+
+Use [Facility]
+
+GO
+
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Platform_GetMaxID' 
 AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
 EXEC('CREATE PROCEDURE [dbo].[Facility_Platform_GetMaxID] AS BEGIN SET NOCOUNT ON; END')
