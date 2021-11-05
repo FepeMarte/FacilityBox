@@ -83,6 +83,26 @@ namespace FacilityBox.Controller
                 return id;
             }
         }
+
+        public int UpdatePlatform(Platform platform)
+        {
+
+            using (SqlConnection cn = new SqlConnection(Utils.ConnectionString))
+            {
+                var id = cn.ExecuteScalar<int>("Facility_Platform_Update",
+                param: new
+                {
+                    PlatformID = platform.PlatformID,
+                    Name = platform.Name,
+                    Rate = platform.Rate,
+                    Inactive = platform.Inactive
+                },
+                transaction: CurrentTransaction,
+                commandType: CommandType.StoredProcedure);
+
+                return id;
+            }
+        }
     }
 
   

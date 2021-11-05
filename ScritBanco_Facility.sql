@@ -420,7 +420,7 @@ GO
 
 ALTER PROCEDURE Facility_Platform_Create
 @Name varchar(150),
-@Rate decimal,
+@Rate money,
 @Inactive Bit
 AS
 BEGIN
@@ -442,3 +442,32 @@ END
 GO
 
 ------------------------------------------------------------------------
+
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Platform_Update' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Platform_Update] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+
+ALTER PROCEDURE Facility_Platform_Update
+@PlatformID int,
+@Name varchar(150),
+@Rate money,
+@Inactive Bit
+AS
+BEGIN
+	UPDATE Platforms SET
+	Name = @Name,
+	Rate = @Rate,
+	Inactive = @Inactive
+	WHERE PlatformID = @PlatformID
+
+
+END
+GO
+
+--------------------------------------------------------------------------------

@@ -158,7 +158,7 @@ namespace FacilityBox.View.ViewModels
             else
             {
                 //update
-               // var id = _PlatformService.UpdateCategory(platform);
+                var id = _PlatformService.UpdatePlatform(platform);
             }
 
             MessageBox.Show("Operação realizada com SUCESSO!", "Sucesso");
