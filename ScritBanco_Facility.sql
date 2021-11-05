@@ -151,6 +151,11 @@ INSERT INTO Status(Name) VALUES ('Cancelado')
 ---------------------------PROCEDURES-------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 
+
+----------------------------------------------------------------------------------------------
+--Configuração
+-----------------------------------------------------------------------------------------------
+
 Use [Facility]
 
 GO
@@ -171,26 +176,6 @@ BEGIN
 	SecondaryColor
 	FROM Configuration
 	WHERE ConfigID = @ConfigID
-END
-GO
-
-----------------------------------------------------------------------
-
-Use [Facility]
-
-GO
-
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Category_GetMaxID' 
-AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
-EXEC('CREATE PROCEDURE [dbo].[Facility_Category_GetMaxID] AS BEGIN SET NOCOUNT ON; END')
-
-GO
-ALTER PROCEDURE Facility_Category_GetMaxID
-
-AS
-BEGIN
- SELECT MAX(CategoryID) FROM Categories
-
 END
 GO
 
@@ -219,6 +204,28 @@ END
 GO
 
 -------------------------------------------------------------------------------------
+--CATEGORIA
+-------------------------------------------------------------------------------------
+
+
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Category_GetMaxID' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Category_GetMaxID] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+ALTER PROCEDURE Facility_Category_GetMaxID
+
+AS
+BEGIN
+ SELECT MAX(CategoryID) FROM Categories
+
+END
+GO
+--------------------------------------------------------------------------------------
 
 Use [Facility]
 
@@ -327,8 +334,8 @@ END
 GO
 
 --------------------------------------------------------------------------------------
-
-
+--PLATAFORMA
+--------------------------------------------------------------------------------------
 
 Use [Facility]
 
@@ -375,3 +382,63 @@ END
 GO
 
 ----------------------------------------------------------------------------------------
+
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Platform_GetPlatformByName' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Platform_GetPlatformByName] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+
+ALTER PROCEDURE Facility_Platform_GetPlatformByName
+@Name varchar(150)
+AS
+BEGIN
+	SELECT 
+	PlatformID,
+	Name,
+	Inactive
+	FROM Platforms
+	WHERE Name = @Name
+
+END
+GO
+
+-------------------------------------------------------------------------------------------
+Use [Facility]
+
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'Facility_Platform_Create' 
+AND ROUTINE_SCHEMA = 'dbo' AND ROUTINE_TYPE = 'PROCEDURE')
+EXEC('CREATE PROCEDURE [dbo].[Facility_Platform_Create] AS BEGIN SET NOCOUNT ON; END')
+
+GO
+
+ALTER PROCEDURE Facility_Platform_Create
+@Name varchar(150),
+@Rate decimal,
+@Inactive Bit
+AS
+BEGIN
+	INSERT INTO Platforms
+	(
+		Name,
+		Rate,
+		Inactive
+	)VALUES
+	(
+		@Name,
+		@Rate,
+		@Inactive
+	)
+
+	SELECT SCOPE_IDENTITY();
+
+END
+GO
+
+------------------------------------------------------------------------

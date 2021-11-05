@@ -81,7 +81,7 @@
         </StackPanel>
 
         <TabControl 
-                x:Name="tcCategory"
+                x:Name="tcPlatforms"
                 Grid.Row="2" 
                 Grid.ColumnSpan="2" 
                 Height="340" 
@@ -127,7 +127,7 @@
                               HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                               VerticalContentAlignment="Center" Height="Auto" 
                               AutoGenerateColumns="False" IsReadOnly="True" 
-                              SelectedItem="{Binding SelectedPlatiform, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                              SelectedItem="{Binding SelectedPlatform, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                               SelectionMode="Single" CanUserAddRows="false" 
                               MouseDoubleClick="DataGrid_MouseDoubleClick"
                               VirtualizingStackPanel.VirtualizationMode = "Recycling"
@@ -151,8 +151,8 @@
                                             </Style>
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    
-                                    <DataGridTextColumn Header="Taxa" Binding="{Binding Rate}" ClipboardContentBinding="{x:Null}">
+
+                                    <DataGridTextColumn Header="Taxa" Binding="{Binding Rate, StringFormat=F2}" ClipboardContentBinding="{x:Null}">
                                         <DataGridTextColumn.ElementStyle>
                                             <Style>
                                                 <Setter Property="TextBlock.HorizontalAlignment" Value="Left"></Setter>

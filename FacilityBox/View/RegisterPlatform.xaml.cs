@@ -52,13 +52,14 @@ namespace FacilityBox.View
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var a = (DataContext as RegisterCategoryViewModel);
+            var a = (DataContext as RegisterPlatformViewModel);
             a.IsEdit = true;
-            a.ID = a.SelectedCategory.CategoryID;
-            a.Name = a.SelectedCategory.Name;
-            a.Inactive = a.SelectedCategory.Inactive;
+            a.ID = a.SelectedPlatform.PlatformID;
+            a.Name = a.SelectedPlatform.Name;
+            a.Rate = a.SelectedPlatform.Rate;
+            a.Inactive = a.SelectedPlatform.Inactive;
 
-            Dispatcher.BeginInvoke((Action)(() => tcCategory.SelectedIndex = 1));
+            Dispatcher.BeginInvoke((Action)(() => tcPlatforms.SelectedIndex = 1));
 
         }
 

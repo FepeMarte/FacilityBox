@@ -92,6 +92,15 @@ namespace FacilityBox.View.ViewModels
             }
         }
 
+
+        ICommand _SaveCommand;
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return _SaveCommand ?? (_SaveCommand = new CommandHandler(() => Save(), true));
+            }
+        }
         #endregion
 
 
@@ -144,7 +153,7 @@ namespace FacilityBox.View.ViewModels
                     return;
                 }
 
-               // var id = _PlatformService.CreateCategory(platform);
+                var id = _PlatformService.CreatePlatform(platform);
             }
             else
             {
